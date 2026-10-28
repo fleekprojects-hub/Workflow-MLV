@@ -1,0 +1,521 @@
+<title>Rekomendasi Agen MLV</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Konsep: dokumen keputusan terang. Sidebar navigasi, tabel padat, kartu untuk kelebihan dan kekurangan. Satu tema terang, latar putih. */
+:root{
+  --bg:#ffffff; --fg:#17212e; --muted:#566274; --line:#d5dce5; --soft:#f3f6f9;
+  --human:#e3e8f6; --agent:#d3eeea; --system:#ece9e2;
+  --ok:#17703f; --warn:#9a5206; --bad:#b3261e; --accent:#0e6b66;
+  --f-head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#ffffff;color:var(--fg);font:15px/1.55 var(--f-body);margin:0}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);min-height:100vh}
+aside{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;border-right:1px solid var(--line);background:var(--soft);padding:22px 14px;display:flex;flex-direction:column;gap:14px}
+.brand{font:700 17px var(--f-head);line-height:1.2}
+.brand small{display:block;font:400 11.5px var(--f-mono);color:var(--muted);margin-top:4px}
+aside nav{display:flex;flex-direction:column;gap:2px}
+aside nav a{display:flex;gap:8px;text-decoration:none;color:var(--fg);font-size:13.5px;padding:7px 9px;border-radius:6px;border-left:3px solid transparent}
+aside nav a span{font:500 11.5px var(--f-mono);color:var(--muted);min-width:18px;padding-top:2px}
+aside nav a:hover,aside nav a:focus-visible{background:#e6ecf2;outline:none}
+aside nav a.on{background:#fff;border-left-color:var(--accent);font-weight:600}
+main{padding:34px max(18px,env(safe-area-inset-right,0px)) 90px 34px;max-width:1080px;display:flex;flex-direction:column;gap:48px;min-width:0}
+section{display:flex;flex-direction:column;gap:12px;min-width:0;scroll-margin-top:16px}
+h1,h2,h3{font-family:var(--f-head);line-height:1.15;margin:0;text-wrap:balance}
+h1{font-size:clamp(26px,4vw,36px)} h2{font-size:23px} h3{font-size:16px}
+p{margin:0} .lead{color:var(--muted);max-width:72ch}
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.sec-n{font:500 12px var(--f-mono);color:var(--accent);letter-spacing:.06em}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;min-width:680px;font-size:13.5px}
+th,td{text-align:left;vertical-align:top;padding:8px 11px;border-bottom:1px solid var(--line)}
+th{font:500 11.5px var(--f-mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:var(--soft)}
+tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600}
+td.n{font-weight:400}
+tr.grp td{background:var(--soft);font:600 13px var(--f-head);color:var(--accent)}
+.pill{display:inline-block;font:500 11.5px var(--f-mono);padding:1px 7px;border-radius:99px;border:1px solid currentColor;margin:0 5px 2px 0;white-space:nowrap}
+.ok{color:var(--ok)} .warn{color:var(--warn)} .bad{color:var(--bad)} .mut{color:var(--muted)}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0;background:#fff;display:flex;flex-direction:column;gap:6px}
+.card b.k{display:block;font:500 11.5px var(--f-mono);letter-spacing:.06em;text-transform:uppercase}
+.card.go{border-color:var(--ok);background:#f4fbf7}
+.card.no{border-color:#e7b9b5;background:#fdf6f5}
+.card ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px;font-size:13.5px}
+.opt-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.price{font:600 14px var(--f-mono);color:var(--accent)}
+ol,ul{margin:0}
+ol.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+ol.steps li{counter-increment:s;border:1px solid var(--line);border-radius:8px;padding:11px 12px 11px 46px;position:relative;background:#fff;font-size:13.5px}
+ol.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;font:600 13px var(--f-mono);background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:grid;place-items:center}
+.tabs{display:flex;flex-wrap:wrap;gap:6px}
+.tabs button{font:500 13px var(--f-body);color:var(--fg);background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 11px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tabs.sub button[aria-selected="true"]{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.lane-note{font-size:13.5px;color:var(--muted);max-width:80ch}
+.swim{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.swim svg{display:block}
+.swim text{font-family:var(--f-body);fill:var(--fg)}
+.swim .ln{fill:none;stroke:var(--muted);stroke-width:1.4}
+.swim .lanebg{stroke:var(--line);stroke-width:1}
+.swim .lanelabel{font-weight:600;font-size:12.5px}
+.swim .lanesub{font-size:10.5px;fill:var(--muted)}
+.swim .bx{stroke:#b9c3cf;stroke-width:1.2}
+.swim .bx.approval{stroke:var(--warn);stroke-width:2.6}
+.swim .bx.warn{stroke:var(--warn);stroke-dasharray:5 3;stroke-width:1.8}
+.swim .bx.block{stroke:var(--bad);stroke-dasharray:5 3;stroke-width:2.2}
+.swim .t{font-size:11.2px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);align-items:center}
+.legend i{display:inline-block;width:14px;height:14px;border-radius:3px;border:1.5px solid #b9c3cf;vertical-align:-2px;margin-right:5px}
+.legend .a{background:var(--agent)} .legend .h{background:var(--human)} .legend .s{background:var(--system)}
+.legend .ap{border-color:var(--warn);border-width:2.6px} .legend .wn{border:2px dashed var(--warn)}
+.tier{font:500 11.5px var(--f-mono);padding:1px 7px;border-radius:4px;white-space:nowrap}
+.tA{background:var(--agent)} .tB{background:var(--human)} .tC{background:var(--system)}
+a{color:var(--accent)}
+.src li{font-size:13.5px;margin-bottom:4px}
+.tag{font:11.5px var(--f-mono);color:var(--muted)}
+@media (max-width:860px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  aside{position:sticky;top:0;z-index:20;height:auto;flex-direction:row;align-items:center;gap:10px;padding:8px max(12px,env(safe-area-inset-left,0px));border-right:0;border-bottom:1px solid var(--line);overflow-x:auto;padding-top:calc(8px + env(safe-area-inset-top,0px))}
+  .brand{display:none}
+  aside nav{flex-direction:row;gap:4px}
+  aside nav a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent;border-radius:4px}
+  aside nav a.on{border-bottom-color:var(--accent)}
+  main{padding:22px max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
+}
+</style>
+
+<div class="layout">
+<aside>
+  <div class="brand">Rekomendasi Agen MLV<small>Fleek Project · draf 28 Okt 2026</small></div>
+  <nav id="nav" aria-label="Bagian">
+    <a href="#opsi"><span>1</span>Opsi dan fitur</a>
+    <a href="#agentic"><span>2</span>Agentic AI dan swimlane</a>
+    <a href="#rekom"><span>3</span>Rekomendasi Fleek</a>
+    <a href="#sumber"><span>4</span>Sumber</a>
+  </nav>
+</aside>
+
+<main>
+<header style="display:flex;flex-direction:column;gap:8px">
+  <span class="eyebrow">Fleek Project · MLV Teknologi</span>
+  <h1>Agen AI per divisi di Microsoft Teams: opsi, harga, dan rekomendasi</h1>
+  <p class="lead">Dibaca berurutan dari atas. Harga adalah perkiraan dalam USD per bulan. Label di tabel: <span class="pill ok">resmi</span> dicek ke dokumentasi, <span class="pill warn">sekunder</span> dari blog atau ringkasan, <span class="pill bad">belum teruji</span> perlu uji di tenant.</p>
+</header>
+
+
+<section id="opsi">
+  <span class="sec-n">1</span><h2>Opsi, harga, dan kemampuan per fitur divisi</h2>
+  <p class="lead">Enam opsi diurutkan dari yang paling efisien. Fitur diambil dari dokumen Job Ownership MLV. Biaya adalah perkiraan USD per bulan: lisensi Microsoft 365 Copilot USD 30 per orang (nol bila MLV sudah punya), kredit dan token dihitung dari asumsi 8 brief per hari selama 22 hari, sekitar 440 email, dan sekitar 110 pemantauan jadwal per bulan. Jasa Fleek tidak termasuk.</p>
+
+  <h3>A. Ikhtisar opsi</h3>
+  <div class="tw"><table>
+    <tr><th>Opsi</th><th>Biaya per bulan</th><th>Keunggulan</th><th>Kekurangan</th><th>Akal hemat</th></tr>
+    <tr><td>1. Power Automate + Agent Builder</td><td class="n"><span class="price">0 sampai 240</span></td>
+      <td class="n"><ul><li>Termurah, hampir tanpa bangun</li><li>Pengingat dan kartu persetujuan di Teams lewat Power Automate</li><li>Agen penjawab per divisi termasuk lisensi USD 30</li><li>Copilot di Word, Excel, PowerPoint</li></ul></td>
+      <td class="n"><ul><li>AI hanya saat ditanya</li><li>Alur terjadwal tanpa AI</li><li>Tidak ada orkestrator</li></ul></td>
+      <td class="n">Otomasi tanpa AI, AI hanya saat ditanya, kursi Copilot hanya untuk lead dan MD</td></tr>
+    <tr><td>4. Claude per lead</td><td class="n"><span class="price">136 sampai 200</span></td>
+      <td class="n"><ul><li>Langganan pribadi tiap lead, sah</li><li>Tugas terjadwal di cloud Anthropic, laptop boleh mati</li><li>Kualitas dokumen tinggi</li></ul></td>
+      <td class="n"><ul><li>Bukan di Teams, tanpa grup dan persetujuan</li><li>Planner tidak didukung</li><li>Tidak ada orkestrator</li><li>Research preview</li></ul></td>
+      <td class="n">Pro USD 17 sampai 20 per lead, bukan satu akun untuk semua</td></tr>
+    <tr><td>2. Copilot Studio penuh</td><td class="n"><span class="price">200 sampai 440</span></td>
+      <td class="n"><ul><li>Pemicu bawaan: jadwal, email masuk, perubahan data</li><li>Langsung di Teams dengan persetujuan Power Automate</li><li>Agen induk dan agen anak untuk orkestrator dasar</li><li>1500+ konektor</li></ul></td>
+      <td class="n"><ul><li>Kualitas dokumen sedang</li><li>Pemakaian otonom memakai credits</li><li>Grup chat belum teruji</li></ul></td>
+      <td class="n">Pay-as-you-go bila pemakaian kecil, mulai dari 3 agen</td></tr>
+    <tr><td>3. Hibrida Copilot Studio + Claude</td><td class="n"><span class="price">250 sampai 610</span></td>
+      <td class="n"><ul><li>Semua kelebihan Opsi 2</li><li>Dokumen berat dikerjakan layanan Claude</li><li>Tanpa membangun bot dan antrean</li></ul></td>
+      <td class="n"><ul><li>Dua sistem, dua tagihan</li><li>Memanggil layanan luar belum teruji</li><li>Kunci Claude harus milik MLV</li></ul></td>
+      <td class="n">Claude hanya untuk dokumen berat, sisanya Copilot Studio</td></tr>
+    <tr><td>5. Bot sendiri + Claude (Agent SDK atau API)</td><td class="n"><span class="price">100 sampai 410</span> + jasa bangun</td>
+      <td class="n"><ul><li>Kendali penuh atas aturan, log, orkestrator</li><li>Claude Code mengolah PDF, Excel, Word langsung</li><li>Pemicu apa pun bisa ditulis</li></ul></td>
+      <td class="n"><ul><li>Beban bangun dan rawat terbesar</li><li>Server selalu hidup, sandbox ketat</li><li>Biaya variabel</li></ul></td>
+      <td class="n">Foundry di Azure MLV untuk satu tagihan, batasi langkah per run</td></tr>
+    <tr><td>6. Satu akun Pro untuk semua</td><td class="n"><span class="price">20</span></td>
+      <td class="n">Murah dan kualitas tinggi</td>
+      <td class="n"><ul><li>Melanggar ketentuan Anthropic untuk melayani banyak orang</li><li>Kuota satu orang</li><li>Tidak ada integrasi Teams resmi</li></ul></td>
+      <td class="n"><span class="pill bad">Dicoret</span></td></tr>
+  </table></div>
+
+  <h3>B. Fitur per divisi: bagaimana tiap opsi memenuhinya</h3>
+  <p class="lead"><span class="pill ok">Bisa</span> berjalan sesuai kebutuhan. <span class="pill warn">Sebagian</span> ada batasan atau perlu campur tangan manual. <span class="pill bad">Tidak</span> tidak tersedia. Kolom opsi urut dari yang paling efisien.</p>
+  <div class="tw"><table>
+    <tr><th>Fitur dan tugas</th><th>1. PA + Agent Builder</th><th>4. Claude per lead</th><th>2. Copilot Studio</th><th>3. Hibrida</th><th>5. Bot sendiri</th></tr>
+
+    <tr class="grp"><td colspan="6">MD (Melvin)</td></tr>
+    <tr><td>Antrean persetujuan harian dan peringatan eskalasi (Teams)</td><td class="n"><span class="pill warn">Sebagian</span>Power Automate kumpulkan item dan kirim kartu, tanpa ringkasan AI</td><td class="n"><span class="pill bad">Tidak</span>Bukan di Teams, tidak ada antrean terpadu</td><td class="n"><span class="pill ok">Bisa</span>Agen meringkas, Approvals untuk keputusan</td><td class="n"><span class="pill ok">Bisa</span>Sama dengan Opsi 2</td><td class="n"><span class="pill ok">Bisa</span>Antrean dan kartu buatan sendiri</td></tr>
+    <tr><td>Bahan rapat keuangan bulanan dan jadwal rapat (Excel, PowerPoint, kalender)</td><td class="n"><span class="pill warn">Sebagian</span>Undangan Teams lewat Power Automate, bahan oleh Lestari dengan Copilot</td><td class="n"><span class="pill warn">Sebagian</span>Claude membuat Excel dan slide, undangan minta konfirmasi</td><td class="n"><span class="pill warn">Sebagian</span>Agen mengisi template, undangan Outlook</td><td class="n"><span class="pill ok">Bisa</span>Layanan Claude membuat Excel dan slide</td><td class="n"><span class="pill ok">Bisa</span>Dokumen dan undangan lewat Graph</td></tr>
+
+    <tr class="grp"><td colspan="6">Account Manager (Amalia)</td></tr>
+    <tr><td>Follow-up tender dan quotation (Outlook, ekspor CRM)</td><td class="n"><span class="pill warn">Sebagian</span>Pengingat otomatis, draf email saat ditanya</td><td class="n"><span class="pill warn">Sebagian</span>Draf email, kirim minta konfirmasi</td><td class="n"><span class="pill ok">Bisa</span>Pemicu harian dan draf</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Kickoff Meeting dan handover (kalender, rapat Teams, Word)</td><td class="n"><span class="pill warn">Sebagian</span>Undangan Teams lewat Power Automate, handover manual dengan Copilot</td><td class="n"><span class="pill warn">Sebagian</span>Draf handover, undangan minta konfirmasi</td><td class="n"><span class="pill ok">Bisa</span>Agen draf agenda dan handover, undangan Outlook</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Presentasi proposal (PowerPoint)</td><td class="n"><span class="pill ok">Bisa</span>Copilot di PowerPoint, oleh pengguna</td><td class="n"><span class="pill ok">Bisa</span>Claude membuat slide, oleh pengguna</td><td class="n"><span class="pill warn">Sebagian</span>Belum teruji</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Sales Administrator (Silvi)</td></tr>
+    <tr><td>Pengingat deadline tender dan checklist (Planner, OneDrive)</td><td class="n"><span class="pill ok">Bisa</span>Power Automate, tanpa AI</td><td class="n"><span class="pill warn">Sebagian</span>Planner tidak didukung</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Banding harga supplier dari PDF dan Excel, draf quotation (Excel, Word)</td><td class="n"><span class="pill warn">Sebagian</span>Agen menjawab dari dokumen, tabel dibuat manual</td><td class="n"><span class="pill ok">Bisa</span>Kualitas tinggi, per orang</td><td class="n"><span class="pill warn">Sebagian</span>Kualitas sedang</td><td class="n"><span class="pill ok">Bisa</span>Layanan Claude</td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Finance & Accounting (Lestari)</td></tr>
+    <tr><td>Umur piutang dan pengingat bertingkat (Excel, Outlook)</td><td class="n"><span class="pill ok">Bisa</span>Power Automate dari ekspor, tanpa AI</td><td class="n"><span class="pill warn">Sebagian</span>Draf pengingat, kirim minta konfirmasi</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Cek tiga arah invoice, PO, bukti terima (PDF, Excel)</td><td class="n"><span class="pill warn">Sebagian</span>Tanya per dokumen, tidak otomatis</td><td class="n"><span class="pill ok">Bisa</span>Per orang</td><td class="n"><span class="pill warn">Sebagian</span>Kualitas sedang</td><td class="n"><span class="pill ok">Bisa</span>Layanan Claude</td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Forecast kas dan presentasi keuangan bulanan (Excel, PowerPoint)</td><td class="n"><span class="pill warn">Sebagian</span>Copilot di Excel dan PowerPoint, manual</td><td class="n"><span class="pill ok">Bisa</span>Per orang</td><td class="n"><span class="pill warn">Sebagian</span>Isi template</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Office Administrator (Ariana)</td></tr>
+    <tr><td>Tracker PO dan DO belum kembali (Excel, Planner)</td><td class="n"><span class="pill ok">Bisa</span>Power Automate, tanpa AI</td><td class="n"><span class="pill warn">Sebagian</span>Planner tidak didukung</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Draf PO dan Delivery Order (Word, PDF)</td><td class="n"><span class="pill warn">Sebagian</span>Copilot di Word, manual</td><td class="n"><span class="pill ok">Bisa</span>Per orang</td><td class="n"><span class="pill warn">Sebagian</span>Isi template</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Project Manager (Nirwan)</td></tr>
+    <tr><td>Notulen rapat Teams jadi tugas Planner (transkrip, Word, Planner)</td><td class="n"><span class="pill warn">Sebagian</span>Copilot meringkas rapat, tugas Planner lewat Power Automate</td><td class="n"><span class="pill bad">Tidak</span>Planner tidak didukung</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Status MPMS, cek folder project dan dokumen billing (ekspor, OneDrive)</td><td class="n"><span class="pill warn">Sebagian</span>Pengingat otomatis, tanpa AI</td><td class="n"><span class="pill ok">Bisa</span>Per orang</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Technician (Darma)</td></tr>
+    <tr><td>Foto dan catatan jadi laporan harian, rekap material (foto, Word)</td><td class="n"><span class="pill bad">Tidak</span>Foto belum bisa dibaca agen</td><td class="n"><span class="pill ok">Bisa</span>Claude membaca foto, per orang</td><td class="n"><span class="pill warn">Sebagian</span>Foto belum teruji</td><td class="n"><span class="pill ok">Bisa</span>Layanan Claude</td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Office Boy (Oja)</td></tr>
+    <tr><td>Brief tugas Planner dan pengingat bukti serah terima</td><td class="n"><span class="pill ok">Bisa</span>Power Automate ke chat pribadi</td><td class="n"><span class="pill bad">Tidak</span>Planner tidak didukung</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+
+    <tr class="grp"><td colspan="6">Lintas divisi dan pimpinan</td></tr>
+    <tr><td>Jalan otomatis dengan AI tanpa diperintah (brief AI, pemantauan)</td><td class="n"><span class="pill bad">Tidak</span>AI hanya saat ditanya</td><td class="n"><span class="pill warn">Sebagian</span>Jadwal per orang di cloud Anthropic</td><td class="n"><span class="pill ok">Bisa</span>Pemicu bawaan, memakai credits</td><td class="n"><span class="pill ok">Bisa</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Grup Teams pimpinan dan persetujuan</td><td class="n"><span class="pill ok">Bisa</span>Posting dan Approvals dari Power Automate</td><td class="n"><span class="pill bad">Tidak</span></td><td class="n"><span class="pill warn">Bisa, perlu uji grup</span></td><td class="n"><span class="pill warn">Bisa, perlu uji grup</span></td><td class="n"><span class="pill ok">Bisa</span></td></tr>
+    <tr><td>Orkestrator: estafet tender sampai penutupan, antrean terpadu, ringkasan ke grup</td><td class="n"><span class="pill bad">Tidak</span></td><td class="n"><span class="pill bad">Tidak</span></td><td class="n"><span class="pill warn">Sebagian</span>Agen induk dengan agen anak, dasar</td><td class="n"><span class="pill warn">Sebagian</span>Dasar</td><td class="n"><span class="pill ok">Bisa</span>Kuat, aturan ditulis sendiri</td></tr>
+  </table></div>
+</section>
+
+<section id="agentic">
+  <span class="sec-n">2</span><h2>Agentic AI per opsi dan swimlane</h2>
+  <p class="lead">Dua lapisan: <b>agen per divisi</b> (pelaksana) dan <b>Orkestrator</b> (mengatur lintas divisi). Agen jalan sendiri lewat pemicu, tanpa diperintah tiap hari. Pekerjaan yang butuh keputusan berhenti di gerbang konfirmasi sampai manusia menyetujui.</p>
+  <div class="tw"><table>
+    <tr><th>Aspek</th><th>1. PA + Agent Builder</th><th>4. Claude per lead</th><th>2. Copilot Studio</th><th>3. Hibrida</th><th>5. Bot sendiri</th></tr>
+    <tr><td>Pemicu otomatis</td><td class="n">Power Automate: jadwal, email masuk, file baru</td><td class="n">Tugas terjadwal Claude Code di cloud: jadwal, panggilan API, GitHub</td><td class="n">Pemicu Copilot Studio: jadwal, email masuk, perubahan data</td><td class="n">Sama dengan Opsi 2</td><td class="n">Timer dan notifikasi Graph yang kita tulis sendiri</td></tr>
+    <tr><td>Otak AI</td><td class="n">Agent Builder (hanya saat ditanya)</td><td class="n">Claude lewat Claude Code cloud, tanpa CLI</td><td class="n">Agen Copilot Studio, model OpenAI atau Claude</td><td class="n">Opsi 2 + layanan Claude untuk dokumen berat</td><td class="n">Claude Code (Agent SDK) menjalankan CLI di container milik MLV, memakai API key</td></tr>
+    <tr><td>Orkestrator</td><td class="n">Tidak ada. Alur Power Automate sederhana.</td><td class="n">Tidak ada</td><td class="n">Agen induk dengan agen anak per divisi</td><td class="n">Sama dengan Opsi 2</td><td class="n">Agen induk dengan subagen per divisi, aturan ditulis sendiri</td></tr>
+    <tr><td>Lintas divisi</td><td class="n">Manual lewat chat</td><td class="n">Tidak</td><td class="n">Agen induk memanggil agen anak</td><td class="n">Sama dengan Opsi 2</td><td class="n">Orkestrator memanggil subagen, mengawal siklus project</td></tr>
+    <tr><td>Gerbang konfirmasi</td><td class="n">Power Automate Approvals di Teams</td><td class="n">Tidak ada. Run berhenti bila minta izin</td><td class="n">Power Automate Approvals, agen menunggu</td><td class="n">Sama dengan Opsi 2</td><td class="n">Adaptive Card Setuju dan Tolak buatan sendiri</td></tr>
+    <tr><td>Log audit</td><td class="n">Daftar SharePoint lewat alur</td><td class="n">Riwayat run Claude</td><td class="n">Daftar SharePoint lewat alur</td><td class="n">Sama dengan Opsi 2</td><td class="n">Log append-only milik MLV</td></tr>
+  </table></div>
+  <div class="cards">
+    <div class="card"><b class="k">Jawaban: Claude Code pakai CLI atau cloud?</b><ul><li><b>Opsi 4:</b> cloud milik Anthropic (tugas terjadwal), tanpa CLI di laptop <span class="pill ok">resmi</span></li><li><b>Opsi 5:</b> CLI tetap dipakai, tetapi dijalankan otomatis di container cloud milik MLV oleh Agent SDK, memakai API key MLV <span class="pill ok">resmi</span></li><li><b>Laptop mati:</b> aman di kedua jalur itu.</li></ul></div>
+    <div class="card"><b class="k">Gerbang konfirmasi</b><table style="min-width:0;font-size:12.5px"><tr><td><span class="tier tA">A</span></td><td class="n">Agen jalan sendiri dan melapor: baca, rangkum, ingatkan</td></tr><tr><td><span class="tier tB">B</span></td><td class="n">Agen menyusun draf lalu <b>menunggu</b>. Setelah disetujui, manusia yang menjalankan</td></tr><tr><td><span class="tier tC">C</span></td><td class="n">Manusia saja: bayar, ubah rekening, tulis ke sistem inti, kirim ke luar</td></tr></table></div>
+  </div>
+
+  <h3>Swimlane per divisi dan fitur (Opsi 2, rekomendasi tahap 1)</h3>
+  <p class="lead">Pilih divisi, lalu fitur. Langkah bergaris tebal kuning adalah persetujuan manusia, tempat agen berhenti menunggu. Kuning putus-putus belum teruji di tenant uji.</p>
+  <div class="tabs" role="tablist" id="dtabs" aria-label="Divisi"></div>
+  <div class="tabs sub" role="tablist" id="ftabs" aria-label="Fitur"></div>
+  <p class="lane-note" id="note"></p>
+  <div class="swim" id="swimbox"></div>
+  <div class="legend">
+    <span><i class="h"></i>Manusia</span><span><i class="a"></i>Agen</span><span><i class="s"></i>Platform atau data</span>
+    <span><i class="ap"></i>Persetujuan, agen menunggu</span><span><i class="wn"></i>Belum teruji</span>
+  </div>
+  <div class="card"><b class="k" id="covh">Tugas dalam cakupan</b><ul id="cov"></ul></div>
+</section>
+
+<section id="rekom">
+  <span class="sec-n">3</span><h2>Rekomendasi Fleek untuk MLV</h2>
+  <div class="cards">
+    <div class="card go"><b class="k" style="color:var(--ok)">Pilihan</b><b>Opsi 2, dimulai dari Opsi 1 sebagai tahap 0.</b> Hasil akhirnya dilengkapi Claude untuk dokumen berat bila perlu.</div>
+    <div class="card"><b class="k">Alasan</b><ul><li>Satu-satunya yang memenuhi sekaligus: otomatis tanpa diperintah, Teams, grup, persetujuan, dan orkestrator dasar, dengan biaya semi-tetap.</li><li>Memakai lisensi yang menurut CEO sudah dimiliki MLV, jadi tambahan biaya kecil.</li><li>Beban bangun Fleek lebih rendah daripada bot sendiri.</li><li>Instruksi dan pengetahuan dari Tahap 0 dipakai ulang di tahap berikutnya.</li></ul></div>
+    <div class="card"><b class="k">Syarat sebelum dijanjikan</b><ul><li>Enam uji gerbang di tenant uji (tabel di bawah).</li><li>Konfirmasi ke Microsoft soal lisensi dan konektor premium.</li><li>Jawaban MLV: berapa kursi Copilot dan apakah ada Azure aktif.</li></ul></div>
+  </div>
+
+  <h3>Urutan setup</h3>
+  <ol class="steps">
+    <li><b>Siapkan akses (admin MLV).</b> Lingkungan Power Platform, izin konektor, aktifkan model Claude bila ada.</li>
+    <li><b>Buat tiga daftar SharePoint.</b> Antrean persetujuan, status FPC, log audit.</li>
+    <li><b>Tulis lembar spesifikasi per agen</b> di repositori Fleek: instruksi, pengetahuan, tool, pemicu, penerima, penyetuju.</li>
+    <li><b>Tahap 0.</b> Buat agen di Agent Builder untuk tiga pilot (Keuangan, MD, Penawaran). Pasang pengingat dan kartu persetujuan di Power Automate.</li>
+    <li><b>Jalankan enam uji gerbang.</b> Pemicu jadwal, pesan ke chat pribadi, posting ke grup, kartu persetujuan, akses data sebatas hak pemilik, ukur credits.</li>
+    <li><b>Tahap 1.</b> Naikkan ke Copilot Studio: agen per divisi, pemicu jadwal, email masuk, dan perubahan data.</li>
+    <li><b>Tambah agen induk (Orkestrator).</b> Mulai dari koordinator FPC, lalu antrean persetujuan terpadu dan ringkasan lintas divisi ke grup.</li>
+    <li><b>Evaluasi.</b> 30 kasus uji per agen dan 20 kasus injeksi sebelum agen dinyatakan siap.</li>
+    <li><b>Tahap 2 (bila perlu).</b> Tambah layanan Claude untuk dokumen berat (Opsi 3), atau pindah ke Opsi 5 bila uji gerbang 3 atau 4 gagal.</li>
+    <li><b>Serah terima.</b> Runbook, akun dan kunci milik MLV, pelatihan lead.</li>
+  </ol>
+
+  <h3>Uji gerbang</h3>
+  <div class="tw"><table>
+    <tr><th>No</th><th>Uji</th><th>Bila gagal</th></tr>
+    <tr><td>1</td><td class="n">Buat agen Copilot Studio dan pilih model Claude</td><td class="n">Pakai model bawaan, kualitas dokumen perlu dicek</td></tr>
+    <tr><td>2</td><td class="n">Pemicu jadwal 07.30 mengirim pesan ke chat pribadi</td><td class="n">Opsi 5</td></tr>
+    <tr><td>3</td><td class="n">Posting ringkasan ke grup berisi banyak orang</td><td class="n">Opsi 5 untuk grup</td></tr>
+    <tr><td>4</td><td class="n">Kartu persetujuan ke MD, hasil kembali dan tercatat</td><td class="n">Opsi 5</td></tr>
+    <tr><td>5</td><td class="n">Baca Planner, OneDrive, Outlook sebatas hak pemilik</td><td class="n">Opsi 5 dengan SSO dan OBO</td></tr>
+    <tr><td>6</td><td class="n">Ukur credits satu hari simulasi, cek konektor premium</td><td class="n">Pay-as-you-go atau kurangi pekerjaan otonom</td></tr>
+  </table></div>
+
+  <h3>Kenapa bukan opsi lain</h3>
+  <ul>
+    <li><b>Opsi 1 saja:</b> tidak ada AI yang jalan sendiri dan tidak ada orkestrator, jadi hanya tahap awal.</li>
+    <li><b>Opsi 4:</b> sah dan murah, tetapi tidak di Teams dan tidak ada grup atau persetujuan. Cocok sebagai alat pribadi lead, bukan sistem MLV.</li>
+    <li><b>Opsi 5:</b> terbaik untuk kualitas dan kendali, tetapi beban bangun tertinggi. Dicadangkan bila uji gerbang gagal.</li>
+    <li><b>Opsi 6:</b> melanggar ketentuan Anthropic.</li>
+  </ul>
+</section>
+
+<section id="sumber">
+  <span class="sec-n">4</span><h2>Sumber</h2>
+  <ul class="src">
+    <li><a href="https://code.claude.com/docs/en/legal-and-compliance">Claude Code: Legal and compliance</a> (aturan login langganan versus API key)</li>
+    <li><a href="https://code.claude.com/docs/en/routines.md">Claude Code: scheduled tasks</a> (cloud, pemicu, batas, laptop boleh mati)</li>
+    <li><a href="https://code.claude.com/docs/en/agent-sdk/hosting.md">Claude Agent SDK: hosting</a> (CLI di container, biaya token versus server)</li>
+    <li><a href="https://www.microsoft.com/id-id/copilot/pricing/copilot-studio">Microsoft: harga Copilot Studio (id-id)</a> (USD 30, paket USD 200 untuk 25.000 credits)</li>
+    <li><a href="https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio">Microsoft: Copilot Studio</a> (1500+ konektor, multi-agent, FAQ lisensi)</li>
+    <li><a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/copilot-studio/anthropic-joins-the-multi-model-lineup-in-microsoft-copilot-studio/">Microsoft: Anthropic di Copilot Studio</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/power-platform/release-plan/2024wave2/microsoft-copilot-studio/create-automated-copilots-triggered-events">Microsoft: agen dengan pemicu kejadian</a></li>
+    <li><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/advanced-proactive-message">Microsoft Learn: pesan Teams proaktif dari agen</a></li>
+    <li><a href="https://www.cloudthat.com/resources/blog/choosing-between-copilot-agent-builder-and-copilot-studio">Perbandingan Agent Builder dan Copilot Studio</a> (sekunder)</li>
+    <li><a href="https://www.getmacha.com/blog/copilot-studio-pricing-explained">Penjelasan harga Copilot Studio</a> (sekunder, tarif credits)</li>
+    <li>Job Ownership MLV Teknologi, Agustus 2026 (dokumen internal klien, tidak untuk dibagikan)</li>
+  </ul>
+  <p class="lead">Catatan verifikasi: dokumen lisensi PDF Microsoft tidak bisa dibuka saat penyusunan. Lisensi Power Automate, konektor premium, batas Agent Builder, dan perilaku grup chat bersandar pada sumber sekunder dan perlu diuji.</p>
+</section>
+</main>
+</div>
+
+<script>
+var tl={A:"tA",B:"tB",C:"tC"};
+var R = [
+ {n:"MD (Melvin)", r:[
+  ["A","Ringkasan antrean persetujuan harian: quotation, PO, pembayaran, eskalasi, lengkap dengan rekomendasi","M365","Compliance with approval procedures"],
+  ["A","Peringatan eskalasi kritis dari agen lain (rekening beda, piutang lewat 30 hari, tender hampir tutup)","M365","Accounts-receivable control"],
+  ["A","Ringkasan review mingguan: peluang, tender, project aktif, pengadaan, kas, penagihan","EKSPOR","Revenue, liquidity, AR control"],
+  ["B","Paket penutupan project: status 6 konfirmasi dan bukti, siap dikeputusan","M365","Percentage of projects fully closed"],
+  ["B","Bahan rapat keuangan bulanan tanggal 10 sampai 15","EKSPOR","Monthly financial decisions"],
+  ["C","Keputusan dan tanda tangan, negosiasi strategis, desain sistem dan pemilihan peralatan, rekrutmen","-","-"]]},
+ {n:"Account Manager (Amalia)", r:[
+  ["A","Pengingat follow-up tender dan quotation hari ini","EKSPOR","Follow-up discipline"],
+  ["A","Cek kelengkapan data CRM per peluang","EKSPOR","CRM data completeness"],
+  ["A","Ringkasan mingguan: status tender, expected PO, langkah berikut","EKSPOR","Qualified-pipeline value"],
+  ["B","Draf pesan follow-up ke pelanggan","M365","Quotation-to-PO conversion"],
+  ["B","Draf bahan Kickoff Meeting dan paket handover ke PM dan Finance","M365","Project-handover completeness"],
+  ["B","Daftar peluang renewal dan garansi, draf follow-up kepuasan","EKSPOR","Repeat-business value"],
+  ["B","Ringkasan kasus piutang untuk dukungan penagihan","EKSPOR","Collection cases supported"],
+  ["C","Negosiasi, pre-bid meeting, hubungan pelanggan, variation order, syarat bayar","-","-"]]},
+ {n:"Sales Administrator (Silvi)", r:[
+  ["A","Pengingat deadline tender (7 dan 2 hari) dan checklist dokumen","M365","Tender submission on time"],
+  ["A","Cek kelengkapan folder komersial dan penanda dokumen usang di OneDrive","M365","Errors caused by obsolete documents"],
+  ["A","Penanda quotation hampir kedaluwarsa dan SO terbuka","EKSPOR","Commercial-document completeness"],
+  ["B","Draf permintaan harga ke supplier dan follow-up harga","M365","Pricing requests on time"],
+  ["B","Tabel perbandingan harga dan kompilasi biaya dari PDF atau Excel supplier","M365","Quoted items with valid cost references"],
+  ["B","Draf quotation dengan nomor revisi terkontrol","M365","Quotation accuracy and turnaround"],
+  ["B","Draf laporan status tender, quotation, dan SO","EKSPOR","Report KD"],
+  ["C","Login dan submit di portal tender, entri project code dan SO di Accurate, kirim quotation","-","-"]]},
+ {n:"Finance & Accounting (Lestari)", r:[
+  ["A","Ringkasan posisi kas harian","EKSPOR","Daily cash-position information"],
+  ["A","Laporan umur piutang dan penanda lewat jatuh tempo","EKSPOR","Value and age of overdue receivables"],
+  ["A","Cek tiga arah invoice supplier, PO, dan bukti terima; tandai selisih dan rekening berbeda","EKSPOR","Payments without complete supporting documents"],
+  ["A","Pencocokan awal mutasi bank dengan invoice, hanya penanda selisih","EKSPOR","Bank-reconciliation accuracy"],
+  ["B","Draf invoice dari dokumen billing PM","M365","Invoice accuracy and timeliness"],
+  ["B","Draf pengingat piutang bertingkat","M365","Collection against due dates"],
+  ["B","Draf forecast kas mingguan dan bahan rapat bulanan dengan MD","EKSPOR","Cash-flow forecast accuracy"],
+  ["C","Transaksi bank dan pembayaran, entri Accurate, payroll, upah harian, BPJS, PPh 21, rekrutmen dan HR (di luar scope, lihat Q24)","-","-"]]},
+ {n:"Office Administrator (Ariana)", r:[
+  ["A","Tracker PO terbuka dan pengiriman, pengingat follow-up supplier","EKSPOR","Supplier order follow-up timeliness"],
+  ["A","Daftar DO belum kembali bertanda tangan dan barang tertahan di gudang","EKSPOR","Signed Delivery Order return rate"],
+  ["A","Penanda stok di bawah buffer minimum","EKSPOR","Buffer-stock availability"],
+  ["B","Draf PO supplier dan payment request","M365","Supplier PO accuracy"],
+  ["B","Draf Delivery Order dari delivery request PM","M365","Customer-delivery accuracy"],
+  ["B","Rekap rekonsiliasi material: dikirim, terpakai, kembali (konfirmasi FPC 3)","EKSPOR","Project-material reconciliation completion"],
+  ["B","Tracker retur garansi","M365","Warranty-return records"],
+  ["C","Terima dan inspeksi barang, gudang, impor dan bea cukai, tanda tangan MD, input goods receipt di Accurate, stock count","-","-"]]},
+ {n:"Project Manager (Nirwan)", r:[
+  ["A","Ringkasan status MPMS per project dan keterlambatan","EKSPOR","Project completion against MPMS schedule"],
+  ["A","Cek kelengkapan folder OneDrive project dan dokumen billing untuk Finance","M365","Project-document completeness"],
+  ["A","Punch-list tracker, status FPC 1 dan 2","M365","SAT and handover timeliness"],
+  ["B","Draf notulen rapat dari transkrip Teams dan tugas Planner dari notulen","M365","Meeting minutes KD"],
+  ["B","Ekstraksi kebutuhan material dari dokumen project dan pembandingan dengan PO supplier","M365","Purchase-requirement accuracy"],
+  ["B","Draf email delivery request","M365","Just-in-time material availability"],
+  ["B","Draf rekap usulan lembur pekerja harian untuk persetujuan PM","M365","Labor and overtime control"],
+  ["C","Survei, instalasi, konfigurasi, testing, training, supervisi, persetujuan lembur, konfirmasi technical completion","-","-"]]},
+ {n:"Technician (Darma)", r:[
+  ["A","Brief tugas MPMS harian","EKSPOR","Assigned-task completion"],
+  ["A","Pengingat DO bertanda tangan yang belum kembali","EKSPOR","Signed DO return timeliness"],
+  ["B","Draf laporan harian dari catatan dan foto, disimpan ke folder OneDrive yang benar","M365","Daily-report timeliness, field-document completeness"],
+  ["B","Rekap absensi pekerja harian dan usulan lembur, tanpa nilai uang","M365","Daily-worker attendance accuracy"],
+  ["B","Rekap pemakaian material dan serial number","M365","Material-use and serial-number records"],
+  ["B","Draf laporan servis dan maintenance","M365","Service and maintenance reports"],
+  ["C","Seluruh kerja fisik: kabel, instalasi, penerimaan di site, supervisi pekerja","-","-"]]},
+ {n:"Office Boy (Oja)", r:[
+  ["A","Brief harian berisi tugas Planner dan MPMS yang ditugaskan kepadanya","M365","Task-completion timeliness"],
+  ["A","Pengingat serah terima bukti: antar invoice, DO kembali, tanda terima","M365","Document and receipt accountability"],
+  ["C","Semua pekerjaan fisik. Tidak diberi agen sendiri.","-","-"]]},
+ {n:"Lintas peran", r:[
+  ["A","Koordinator FPC: pantau enam konfirmasi per project, ingatkan pemilik yang belum","M365","Percentage of projects fully closed"],
+  ["A","Morning brief per orang, maksimal 10 baris","M365","Planner-task completion by due date"],
+  ["A","Tanya jawab SOP dan dokumen dengan tautan sumber, menolak bila sumber tidak ada","M365","Errors caused by obsolete documents"],
+  ["B","Antrean persetujuan dan log audit untuk semua tindakan keluar","M365","Compliance with approval procedures"]]}
+];
+// ---------- Swimlane (Opsi 2) ----------
+var LANEH=104,COLW=172,LABELW=172,BW=152,BH=80;
+var NS="http://www.w3.org/2000/svg";
+function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+function wrap(t,max){var w=t.split(" "),L=[],c="";w.forEach(function(x){if((c+" "+x).trim().length>max){L.push(c);c=x;}else c=(c+" "+x).trim();});if(c)L.push(c);return L;}
+var LN=["Lead divisi","Agen divisi","Orkestrator","Sumber data","Platform","Penyetuju","Grup Teams"];
+var LT=["h","a","a","s","s","h","s"];
+var M={
+ TRIGGER:[4,"Pemicu terjadwal 07.30, memakai credits","ok"],
+ ACCESS:[4,"Konektor Microsoft, identitas akses perlu diuji","warn"],
+ DELIVER:[4,"Power Automate kirim pesan proaktif ke chat pribadi","warn"],
+ GROUP:[6,"Flow memposting ke grup, pengirim perlu diuji","warn"],
+ APPROVAL:[4,"Power Automate Approvals: kartu ke penyetuju, agen MENUNGGU","ok"],
+ LOG:[4,"Tulis log ke daftar SharePoint","ok"]
+};
+// d=data, c=baca, d1=brief, f=baca lead, o=pantau, h=permintaan, i=draf, k=penyetuju, m=tindak lanjut manusia
+var DIVS=[
+ {n:"MD (Melvin)",lead:"Melvin (MD)",agent:"Agen Keputusan",data:"Antrean persetujuan, Planner, ekspor kas dan piutang",appr:"Melvin (MD)",
+  c:"Kumpulkan antrean persetujuan dan peringatan dari agen lain",d1:"Susun brief: keputusan hari ini dan risiko",f:"Baca brief, pilih item mendesak",
+  o:"Pantau tanpa diminta: rekening beda, piutang lewat 30 hari, tender hampir tutup",h:"Minta paket keputusan untuk PO supplier mendesak",
+  s:"Baca PO, perbandingan harga, bukti terima",i:"Susun paket: PO, perbandingan harga, rekomendasi",k:"MD memutuskan setuju atau tolak",m:"MD menandatangani, Ariana mengirim PO (manusia)"},
+ {n:"Account Manager (Amalia)",lead:"Amalia (AM)",agent:"Agen Penjualan",data:"Ekspor MLV CRM, Outlook, Planner",appr:"Melvin (MD)",
+  c:"Baca CRM: peluang, tender, quotation terbuka",d1:"Susun brief: follow-up hari ini, expected PO, CRM belum lengkap",f:"Baca brief",
+  o:"Pantau tanpa diminta: follow-up tender dan quotation yang lewat jadwal, data CRM kosong",h:"Minta draf follow-up dan usulan syarat bayar",
+  s:"Baca riwayat quotation dan email pelanggan",i:"Susun draf email dan ringkasan peluang",k:"MD menyetujui pengecualian syarat bayar",m:"Amalia mengirim email ke pelanggan sendiri"},
+ {n:"Sales Administrator (Silvi)",lead:"Silvi (SA)",agent:"Agen Penawaran",data:"OneDrive, PDF dan Excel supplier, Planner, ekspor SO Accurate",appr:"Melvin (MD)",
+  c:"Baca folder tender, PDF harga supplier, nomor revisi quotation",d1:"Susun brief: deadline tender, harga belum masuk, quotation terbuka",f:"Baca brief",
+  o:"Pantau tanpa diminta: deadline tender 7 dan 2 hari, quotation hampir kedaluwarsa, dokumen usang",h:"Minta draf quotation untuk Proyek X",
+  s:"Baca PDF harga supplier dan template quotation",i:"Bandingkan harga supplier, susun draf quotation dengan nomor revisi",k:"MD menyetujui harga dan margin final",m:"Silvi mengirim quotation dan membuat SO di Accurate (manusia)"},
+ {n:"Finance & Accounting (Lestari)",lead:"Lestari (FA)",agent:"Agen Keuangan",data:"Ekspor Accurate, email invoice supplier, OneDrive",appr:"Melvin (MD)",
+  c:"Baca ekspor kas, piutang, invoice supplier, PO, bukti terima",d1:"Susun brief: posisi kas, piutang jatuh tempo, invoice perlu verifikasi",f:"Baca brief",
+  o:"Pantau tanpa diminta: umur piutang, rekening berbeda, draf pengingat piutang",h:"Minta pengecekan invoice supplier untuk pembayaran",
+  s:"Baca invoice supplier, PO, bukti terima",i:"Cek tiga arah invoice, PO, bukti terima. Tandai selisih dan rekening beda. Susun payment request",k:"MD menyetujui pembayaran",m:"Lestari memproses di bank sendiri, agen tidak pernah membayar"},
+ {n:"Office Administrator (Ariana)",lead:"Ariana (OA)",agent:"Agen Pengadaan",data:"Ekspor stok Accurate, email supplier, OneDrive",appr:"Melvin (MD)",
+  c:"Baca PO terbuka, pengiriman, stok, delivery request PM",d1:"Susun brief: PO terlambat, DO belum kembali, stok di bawah buffer",f:"Baca brief",
+  o:"Pantau tanpa diminta: DO belum kembali, barang tertahan, buffer minimum",h:"Minta draf PO dari purchase requirement PM",
+  s:"Baca purchase requirement PM dan penawaran supplier",i:"Susun draf PO dan payment request",k:"MD menandatangani dan menyetujui PO",m:"Ariana mengirim PO dan menindaklanjuti supplier"},
+ {n:"Project Manager (Nirwan)",lead:"Nirwan (PM)",agent:"Agen Project",data:"Ekspor MPMS, OneDrive, transkrip Teams, Planner",appr:"Melvin (MD)",
+  c:"Baca jadwal MPMS, folder project, transkrip rapat",d1:"Susun brief: jadwal terlambat, dokumen billing kurang, rapat hari ini",f:"Baca brief",
+  o:"Pantau tanpa diminta: status FPC 1 dan 2, punch-list, dokumen billing kurang",h:"Minta cek kesiapan penutupan project X",
+  s:"Baca folder project, punch-list, dokumen billing",i:"Cek folder OneDrive, dokumen billing, punch-list. Susun paket penutupan",k:"MD melakukan final review penutupan project",m:"Nirwan mengonfirmasi dan menutup status project di MPMS"},
+ {n:"Technician (Darma)",lead:"Darma (Teknisi)",agent:"Agen Lapangan",data:"Ekspor MPMS, catatan dan foto lapangan, OneDrive",appr:"Nirwan (PM)",
+  c:"Baca tugas MPMS hari ini dan catatan serta foto",d1:"Susun brief: tugas, material, serial number",f:"Baca brief",
+  o:"Pantau tanpa diminta: DO bertanda tangan yang belum kembali",h:"Kirim catatan dan foto hari ini",
+  s:"Baca catatan dan foto lapangan",i:"Susun laporan harian, rekap absensi dan lembur tanpa nilai uang",k:"PM menyetujui laporan dan lembur",m:"Darma mengirim laporan final"},
+ {n:"Office Boy (Oja)",lead:"Oja (Office Boy)",agent:"Brief tugas, tanpa agen sendiri",data:"Tugas Planner dan MPMS yang ditugaskan",short:true,
+  c:"Baca tugas Planner dan MPMS untuk Oja",d1:"Susun brief tugas hari ini",f:"Baca tugas",o:"Pantau tanpa diminta: antar invoice, DO kembali, bukti serah terima"}
+];
+// diagram fitur khusus per divisi: lanes sub-labels opsional, step=[id,lane,col,text,kind]
+var FEAT={
+ 0:{t:"Rapat keuangan bulanan (kalender dan bahan)",cov:"Excel, PowerPoint, kalender, rapat Teams",
+  steps:[["a",4,0,"Pemicu tanggal 8: persiapan rapat bulanan","ok"],["c",3,1,"Baca ekspor Accurate dan laporan Excel bulan ini"],["b",1,2,"Agen Keuangan: susun bahan kas dan piutang (Excel) dan draf slide"],["d",2,3,"Orkestrator: cek kelengkapan, minta Lestari validasi angka"],["e",5,4,"Lestari memvalidasi angka final","approval"],["f",4,5,"Outlook: buat undangan rapat Teams, tanggal 10 sampai 15","warn"],["g",0,6,"Melvin menerima undangan dan bahan"],["h",6,6,"Pengingat rapat masuk grup","warn"]],
+  edges:"ac cb bd de ef fg fh",sub:{5:"Lestari (validasi angka)"}},
+ 1:{t:"Kickoff Meeting dan handover",cov:"Word, kalender, rapat Teams, Outlook",
+  steps:[["a",4,0,"Pemicu: PO pelanggan masuk (email atau status CRM)","ok"],["b",3,1,"Baca PO, quotation, catatan CRM"],["c",1,2,"Agen Penjualan: draf agenda Kickoff dan paket handover (Word) untuk PM dan Finance"],["d",2,3,"Orkestrator: tentukan peserta, cek kelengkapan handover"],["e",5,4,"Amalia menyetujui agenda dan paket","approval"],["f",4,5,"Outlook: undangan Kickoff via Teams meeting, masuk kalender peserta","warn"],["g",0,6,"Amalia memimpin Kickoff (manusia)"],["h",6,6,"Jadwal dan peserta Kickoff tampil di grup","warn"]],
+  edges:"ab bc cd de ef fg fh",sub:{5:"Amalia (pemimpin Kickoff)"}},
+ 2:{t:"Perbandingan harga ke draf quotation",cov:"PDF, Excel, Word",
+  steps:[["a",0,0,"Silvi mengunggah PDF harga supplier ke folder tender"],["b",4,1,"Pemicu: file baru di folder SharePoint","ok"],["c",3,2,"Baca PDF dan Excel harga, nomor revisi terakhir"],["d",1,3,"Agen Penawaran: tabel perbandingan (Excel) dan draf quotation (Word)"],["e",2,4,"Orkestrator: tandai margin untuk MD, masukkan antrean terpadu"],["f",5,5,"MD menyetujui harga dan margin final","approval"],["g",4,6,"Catat keputusan ke log SharePoint","ok"],["i",1,6,"Bila ditolak: agen merevisi dan kirim ulang"],["h",0,7,"Silvi mengirim quotation dan membuat SO di Accurate (manusia)"]],
+  edges:"ab bc cd de ef fg fi gh",sub:{}},
+ 3:{t:"Piutang dan pengingat bertingkat",cov:"Excel, Outlook, Teams",
+  steps:[["a",4,0,"Pemicu harian 08.00","ok"],["b",3,1,"Baca ekspor umur piutang dan status invoice"],["c",1,2,"Agen Keuangan: daftar piutang jatuh tempo dan lewat tempo"],["d",1,3,"Susun draf pengingat bertingkat: 3 hari sebelum, hari H, 7 hari sesudah"],["e",0,4,"Lestari memeriksa draf"],["f",5,5,"Kartu persetujuan bila nilai melewati batas yang ditentukan MLV","approval"],["g",0,6,"Lestari mengirim pengingat dari akunnya sendiri"],["h",2,4,"Orkestrator: lewat 14 hari ke Amalia, lewat 30 hari ke MD"],["i",6,5,"Eskalasi 30 hari masuk grup dan brief MD","warn"]],
+  edges:"ab bc cd de ef fg dh hi",sub:{5:"MD (nilai di atas batas)"}},
+ 4:{t:"Pantau PO dan DO",cov:"Excel, Planner, Outlook",
+  steps:[["a",4,0,"Pemicu harian 08.00","ok"],["b",3,1,"Baca ekspor PO terbuka, DO, stok"],["c",1,2,"Agen Pengadaan: PO terlambat, DO belum kembali 3 hari kerja, stok di bawah buffer"],["d",4,3,"Kirim ke chat pribadi Ariana","warn"],["f",2,3,"Orkestrator: beri tahu PM bila keterlambatan mengganggu jadwal"],["h",1,3,"Agen menyusun draf follow-up ke supplier"],["e",0,4,"Ariana menghubungi supplier dan Darma (manusia)"],["g",6,4,"Ringkasan keterlambatan ke grup","warn"]],
+  edges:"ab bc cd cf ch de fg he",sub:{5:"Tidak ada persetujuan"}},
+ 5:{t:"Notulen rapat ke tugas Planner",cov:"Rapat Teams, transkrip, Word, Planner",
+  steps:[["a",0,0,"Rapat implementasi di Teams dengan transkrip"],["b",4,1,"Pemicu: transkrip rapat selesai","warn"],["c",3,2,"Baca transkrip dan daftar peserta"],["d",1,3,"Agen Project: draf notulen (Word) dan tugas Planner (judul, pemilik, tenggat)"],["e",5,4,"Nirwan menyetujui notulen dan tugas","approval"],["f",4,5,"Buat tugas di Planner, simpan notulen ke folder project","ok"],["g",0,6,"Peserta menerima tugas di Planner"],["h",2,5,"Orkestrator: tugas untuk divisi lain diteruskan ke agen terkait"],["i",6,6,"Ringkasan keputusan rapat ke grup","warn"]],
+  edges:"ab bc cd de ef fg eh hi",sub:{5:"Nirwan (PM)"}},
+ 6:{t:"Foto dan catatan ke laporan harian",cov:"Foto, Word, OneDrive",
+  steps:[["a",0,0,"Darma mengirim foto dan catatan ke folder OneDrive lapangan"],["b",4,1,"Pemicu: file baru di folder lapangan","ok"],["c",3,2,"Baca foto, catatan, tugas MPMS hari ini"],["d",1,3,"Agen Lapangan: laporan harian (Word), rekap material dan serial number, rekap absensi dan lembur tanpa nilai uang","warn"],["e",5,4,"Nirwan (PM) menyetujui laporan dan lembur","approval"],["f",4,5,"Simpan ke folder OneDrive project yang benar, catat log","ok"],["g",0,6,"Darma mengirim laporan final"],["h",2,5,"Orkestrator: status laporan masuk ringkasan PM"]],
+  edges:"ab bc cd de ef fg eh",sub:{5:"Nirwan (PM)"}},
+ 7:{t:"Brief tugas dan bukti serah terima",cov:"Planner, foto",
+  steps:[["a",4,0,"Pemicu 07.30","ok"],["b",3,1,"Baca tugas Planner dan MPMS atas nama Oja"],["c",1,2,"Susun brief tugas hari ini"],["d",4,3,"Kirim ke chat pribadi Oja","warn"],["e",0,4,"Oja menjalankan tugas dan memfoto bukti serah terima"],["f",1,5,"Agen mencocokkan bukti dengan tugas dan mengingatkan yang belum"],["g",2,6,"Orkestrator: DO bertanda tangan diteruskan ke Pengadaan dan Lapangan"]],
+  edges:"ab bc cd de ef fg",sub:{5:"Tidak ada persetujuan"}}
+};
+// lintas divisi
+var CROSS={t:"Siklus project dari peluang sampai penutupan",
+ lanes:["Orkestrator","Penjualan (Amalia)","Penawaran (Silvi)","Pengadaan (Ariana)","Project dan Lapangan (Nirwan, Darma)","Keuangan (Lestari)","MD (Melvin)"],
+ types:["a","a","a","a","a","a","h"],
+ steps:[["a",0,0,"Pantau peluang dan tender baru dari CRM"],["b",1,1,"Penjualan: follow-up dan data CRM lengkap"],["c",2,2,"Penawaran: banding harga, draf quotation"],["d",6,3,"MD menyetujui quotation","approval"],["e",1,4,"PO pelanggan masuk: kickoff dan handover"],["f",0,5,"Orkestrator memicu Penawaran (SO) dan Pengadaan"],["g",3,6,"Pengadaan: draf PO, tracker, DO"],["h",6,7,"MD menyetujui PO","approval"],["i",4,8,"Project dan Lapangan: implementasi, laporan harian, SAT"],["j",0,9,"Orkestrator memantau konfirmasi dan dokumen billing"],["k",5,10,"Keuangan: draf invoice, pantau piutang"],["l",0,11,"Orkestrator: konfirmasi 1 sampai 5 lengkap, susun paket penutupan"],["m",6,12,"MD final review (konfirmasi 6)","approval"],["n",1,13,"Penjualan: follow-up kepuasan dan renewal"]],
+ edges:"ab bc cd de ef fg gh hi ij jk kl lm mn"};
+
+function briefFlow(d){
+  var S=[];function mac(id,m,c,suf){var v=M[m];S.push([id,v[0],c,v[1]+(suf?" ("+suf+")":""),v[2]]);}
+  mac("a","TRIGGER",0);mac("b","ACCESS",1);
+  S.push(["c",3,2,d.c]);S.push(["d",1,3,d.d1]);mac("e","DELIVER",4);S.push(["f",0,5,d.f]);S.push(["o",1,5,d.o]);
+  var E="ab bc cd de ef do of";
+  if(!d.short){S.push(["h",2,4,"Orkestrator: gabungkan brief semua divisi jadi satu ringkasan"]);mac("g","GROUP",6,"ringkasan lintas divisi");E+=" dh hg";}
+  return {steps:S,edges:E,sub:{}};
+}
+function approveFlow(d){
+  var S=[["h",0,0,d.h],["s",3,1,d.s],["i",1,2,d.i],["q",2,3,"Orkestrator: masukkan ke antrean persetujuan terpadu, urutkan prioritas"]];
+  var v=M.APPROVAL;S.push(["j",4,4,v[1],v[2]]);S.push(["k",5,5,d.k,"approval"]);
+  S.push(["l",4,6,M.LOG[1],"ok"]);S.push(["n",6,6,"Status keputusan masuk grup","warn"]);S.push(["r",1,6,"Bila ditolak: agen merevisi lalu kartu dikirim ulang"]);S.push(["m",0,7,d.m]);
+  return {steps:S,edges:"hs si iq qj jk kl kn kr lm",sub:{5:d.appr}};
+}
+function laneType(types,i){return types?types[i]:LT[i];}
+function draw(spec,d){
+  var lanes=spec.lanes||LN,types=spec.types||null,steps=spec.steps,ncol=0;
+  steps.forEach(function(s){if(s[2]+1>ncol)ncol=s[2]+1;});
+  var W=LABELW+ncol*COLW+12,H=lanes.length*LANEH;
+  var svg=el("svg",{width:W,height:H,viewBox:"0 0 "+W+" "+H,role:"img","aria-label":"Swimlane "+spec.t});
+  var defs=el("defs",{},svg);
+  var m=el("marker",{id:"ar",viewBox:"0 0 10 10",refX:9,refY:5,markerWidth:7,markerHeight:7,orient:"auto-start-reverse"},defs);
+  el("path",{d:"M0,0 L10,5 L0,10 z",fill:"var(--muted)"},m);
+  var fill={h:"var(--human)",a:"var(--agent)",s:"var(--system)"};
+  var sub=spec.sublabels||(d?[d.lead,d.agent+" (Copilot Studio)","Agen induk Copilot Studio",d.data,"Power Automate dan Teams",(spec.sub&&spec.sub[5])||d.appr||"Tidak ada persetujuan","Pimpinan MLV dan agen"]:[]);
+  lanes.forEach(function(n,i){
+    el("rect",{x:0,y:i*LANEH,width:W,height:LANEH,fill:i%2?"var(--bg)":"var(--soft)",class:"lanebg",opacity:i%2?1:.55},svg);
+    var t=el("text",{x:12,y:i*LANEH+28,class:"lanelabel"},svg);t.textContent=n;
+    if(sub[i])wrap(sub[i],26).slice(0,5).forEach(function(ln,j){var u=el("text",{x:12,y:i*LANEH+44+j*12,class:"lanesub"},svg);u.textContent=ln;});
+  });
+  el("line",{x1:LABELW-6,y1:0,x2:LABELW-6,y2:H,stroke:"var(--line)"},svg);
+  var P={};
+  steps.forEach(function(s){P[s[0]]={x:LABELW+s[2]*COLW+(COLW-BW)/2,y:s[1]*LANEH+(LANEH-BH)/2,c:s[2],l:s[1]};});
+  spec.edges.split(" ").forEach(function(e){
+    var a=P[e[0]],b=P[e[1]],p;if(!a||!b)return;
+    if(b.c>a.c){var x1=a.x+BW,y1=a.y+BH/2,x2=b.x,y2=b.y+BH/2,xm=x1+(x2-x1)/2;p="M"+x1+","+y1+" H"+xm+" V"+y2+" H"+(x2-1);}
+    else{var x=a.x+BW/2,ya=b.l<a.l?a.y:a.y+BH,yb=b.l<a.l?b.y+BH:b.y;p="M"+x+","+ya+" V"+(yb+(b.l<a.l?1:-1));}
+    el("path",{d:p,class:"ln","marker-end":"url(#ar)"},svg);
+  });
+  steps.forEach(function(s){
+    var p=P[s[0]];
+    el("rect",{x:p.x,y:p.y,width:BW,height:BH,rx:7,fill:fill[laneType(types,s[1])],class:"bx "+(s[4]||"")},svg);
+    var lines=wrap(s[3],25).slice(0,6),y0=p.y+BH/2-(lines.length-1)*6.1+4;
+    lines.forEach(function(ln,i){var t=el("text",{x:p.x+BW/2,y:y0+i*12.2,"text-anchor":"middle",class:"t"},svg);t.textContent=ln;});
+  });
+  return svg;
+}
+var dtabs=document.getElementById("dtabs"),ftabs=document.getElementById("ftabs"),box=document.getElementById("swimbox"),
+    note=document.getElementById("note"),cov=document.getElementById("cov"),covh=document.getElementById("covh");
+var curD=3,curF=0,NDIV=DIVS.length;
+function flowsFor(i){
+  if(i===NDIV)return [{n:"Siklus project lintas divisi"}];
+  var d=DIVS[i],f=[{n:"Brief dan pantau otomatis"}];
+  if(!d.short)f.push({n:"Pekerjaan dengan persetujuan"});
+  f.push({n:"Fitur khusus: "+FEAT[i].t});
+  return f;
+}
+function buildSpec(i,fi){
+  if(i===NDIV)return {spec:CROSS,d:null,note:"Orkestrator mengawal satu project melewati semua divisi. Tiga titik persetujuan MD ditandai. Agen berhenti menunggu di titik itu."};
+  var d=DIVS[i],fl=flowsFor(i);
+  if(fi===0){var b=briefFlow(d);return {spec:{t:"Brief dan pantau otomatis",steps:b.steps,edges:b.edges,sub:b.sub},d:d,note:"Berjalan sendiri tiap pagi tanpa diperintah. Agen juga memantau di sepanjang hari dan memberi peringatan, tanpa menunggu ditanya."};}
+  if(!d.short&&fi===1){var a=approveFlow(d);return {spec:{t:"Pekerjaan dengan persetujuan",steps:a.steps,edges:a.edges,sub:a.sub},d:d,note:"Lead meminta, agen menyusun draf, lalu BERHENTI di kartu persetujuan. Tindakan keluar baru dijalankan manusia setelah disetujui."};}
+  var F=FEAT[i];return {spec:{t:F.t,steps:F.steps,edges:F.edges,sub:F.sub},d:d,note:"Alur khusus divisi ini. Fitur Microsoft yang dipakai: "+F.cov+"."};
+}
+function showSwim(){
+  for(var j=0;j<dtabs.children.length;j++)dtabs.children[j].setAttribute("aria-selected",j===curD?"true":"false");
+  var fl=flowsFor(curD);if(curF>=fl.length)curF=0;
+  ftabs.innerHTML="";
+  fl.forEach(function(f,i){var bt=document.createElement("button");bt.type="button";bt.setAttribute("role","tab");bt.textContent=f.n;bt.setAttribute("aria-selected",i===curF?"true":"false");bt.onclick=function(){curF=i;showSwim();};ftabs.appendChild(bt);});
+  var r=buildSpec(curD,curF);
+  box.innerHTML="";box.appendChild(draw(r.spec,r.d));note.textContent=r.note;
+  cov.innerHTML="";
+  if(curD===NDIV){covh.textContent="Peran orkestrator";["Mengarahkan permintaan dari grup ke agen yang tepat","Mengawal estafet lintas divisi dan mengingatkan yang macet","Mengumpulkan antrean persetujuan untuk MD","Menggabungkan ringkasan semua divisi ke grup","Mengeskalasi tanda merah"].forEach(function(x){var li=document.createElement("li");li.textContent=x;cov.appendChild(li);});}
+  else{covh.textContent="Tugas dalam cakupan agen: "+DIVS[curD].n;R[curD].r.forEach(function(x){if(x[0]==="C")return;var li=document.createElement("li");li.innerHTML='<span class="tier '+tl[x[0]]+'">'+x[0]+'</span> '+x[1];cov.appendChild(li);});}
+}
+DIVS.forEach(function(d,i){var bt=document.createElement("button");bt.type="button";bt.setAttribute("role","tab");bt.textContent=d.n;bt.onclick=function(){curD=i;curF=0;showSwim();};dtabs.appendChild(bt);});
+(function(){var bt=document.createElement("button");bt.type="button";bt.setAttribute("role","tab");bt.textContent="Lintas divisi (Orkestrator)";bt.onclick=function(){curD=NDIV;curF=0;showSwim();};dtabs.appendChild(bt);})();
+showSwim();
+// navigasi
+(function(){
+  var links=[].slice.call(document.querySelectorAll("#nav a")),secs=links.map(function(a){return document.querySelector(a.getAttribute("href"));});
+  function upd(){var y=window.scrollY+120,cur=0;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i;});links.forEach(function(a,i){a.classList.toggle("on",i===cur);});}
+  window.addEventListener("scroll",upd,{passive:true});upd();
+})();
+</script>
